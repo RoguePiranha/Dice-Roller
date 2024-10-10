@@ -1,0 +1,72 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+
+# JetBrains (PyCharm, IntelliJ)
+.idea/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Eclipse
+.project
+.settings/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Environment variables
+.env
+.env.local
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Compiled object files and binaries
+*.o
+*.out
+*.so
+
+# Build directories
+/build/
+/dist/
+
+
+# Logs and Debug Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Version Control Directories
+.git/
+.hg/
+.svn/
+
