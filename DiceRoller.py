@@ -2,6 +2,7 @@ import tkinter as tk
 import random
 from PIL import Image, ImageTk, ImageDraw, ImageFont
 import os
+import sys
 
 #########################################################################
 #                           Dice Roller GUI                             #
@@ -23,6 +24,20 @@ root = tk.Tk()
 root.title("Dice Roller")
 root.geometry("550x450")  # Set default window size
 
+
+# Helper function to get the correct path for assets
+def get_asset_path(relative_path):
+    """ Get the absolute path to an asset, whether running as a script or a PyInstaller executable. """
+    if hasattr(sys, '_MEIPASS'):
+        # Running in PyInstaller bundle
+        base_path = sys._MEIPASS
+    else:
+        # Running as a script
+        base_path = os.path.abspath(".")
+    
+    return os.path.join(base_path, relative_path)
+
+
 ###########################################################################
 # Set the default font for the text not drawn on the dice.                #
 # I just like Fira Code, you can change it to any font you like           #
@@ -34,9 +49,9 @@ root.option_add("*Font", fira_code_font)
 
 # Path to the fira code font file, which I have included in the project.
 # This font is used to draw the dice roll result on the images
-font_path = os.path.join(os.path.dirname(__file__), "Font/FiraCode-Regular.ttf")
+font_path = get_asset_path("Font/FiraCode-Regular.ttf")
 if not os.path.exists(font_path):
-    font_path = None  # Fallback if font file not found
+    font_path = None  # Fallback if the font file isn't found
 
 # Function to plot different dice topographies
 def plot_dice(roll_result, num_sides, canvas_frame):
@@ -51,8 +66,8 @@ def plot_dice(roll_result, num_sides, canvas_frame):
         ones_result = roll_result % 10
 
         # Load the images for the two D10 dice
-        tens_image_path = "Assets/D10.png"
-        ones_image_path = "Assets/D10.png"
+        tens_image_path = get_asset_path("Assets/D10.png")
+        ones_image_path = get_asset_path("Assets/D10.png")
 
         # Load the images using PIL
         tens_img = Image.open(tens_image_path)
@@ -76,7 +91,7 @@ def plot_dice(roll_result, num_sides, canvas_frame):
         ones_label.place(relx=0.75, rely=0.5, anchor="center")
     else:
         # Define image file path based on the number of sides
-        image_path = f"Assets/D{num_sides}.png"
+        image_path = get_asset_path(f"Assets/D{num_sides}.png")
 
         # Load the image using PIL
         img = Image.open(image_path)
