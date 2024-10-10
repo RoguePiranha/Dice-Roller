@@ -23,15 +23,17 @@ root = tk.Tk()
 root.title("Dice Roller")
 root.geometry("550x450")  # Set default window size
 
-# Set the default font for the entire program
-# I just like Fira Code, you can change it to any font you like
-# The method here pulls from installed system fonts, so if you
-# want to keep using Fira Code, you'll need to install it on your system
-fira_code_font = ("Fira Code", 12)  # Font name and size
-root.option_add("*Font", fira_code_font) # Set the default font for all widgets
+###########################################################################
+# Set the default font for the text not drawn on the dice.                #
+# I just like Fira Code, you can change it to any font you like           #
+# The method here pulls from installed system fonts, so if you            #
+# want to keep using Fira Code, you'll need to install it on your system. #
+###########################################################################
+fira_code_font = ("Fira Code", 12)
+root.option_add("*Font", fira_code_font)
 
-# Path to the fira code font file, change the path if needed
-# this font is used to draw the dice roll result on the images
+# Path to the fira code font file, which I have included in the project.
+# This font is used to draw the dice roll result on the images
 font_path = os.path.join(os.path.dirname(__file__), "Font/FiraCode-Regular.ttf")
 if not os.path.exists(font_path):
     font_path = None  # Fallback if font file not found
@@ -140,7 +142,7 @@ result_label = tk.Label(root, text="Roll result will appear here")
 result_label.pack(pady=10)
 
 # Canvas for topographical representation
-canvas_frame = tk.Frame(root, width=550, height=260, bg="white")  # Set the desired background color here
+canvas_frame = tk.Frame(root, width=550, height=260)
 canvas_frame.pack(pady=10)
 
 # Run the application
